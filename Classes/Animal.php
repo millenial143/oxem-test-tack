@@ -37,23 +37,17 @@ class Animal {
         return $this -> productType;
     }
 
-    public function setProductType($val) {
-        $this -> productType = $val;
+    public function __get($property)
+    {
+        if (property_exists($this, $property)) {
+            return $this->$property;
+        }
     }
 
-    public function getProductMax(){
-        return $this -> productMax;
-    }
-
-    public function setProductMax($val) {
-        $this -> productMax = $val;
-    }
-
-    public function getProductMin(){
-        return $this -> productMin;
-    }
-
-    public function setProductMin($val) {
-        $this -> productMin = $val;
+    public function __set($property, $value)
+    {
+        if (property_exists($this, $property)) {
+            $this->$property = $value;
+        }
     }
 }

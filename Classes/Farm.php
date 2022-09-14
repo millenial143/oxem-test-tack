@@ -6,14 +6,14 @@ class Farm {
     private $productsArray = array();
 
     // добавление животного
-    public function addAnimal(Animal $animal, int $amount = 1){
+    public function addAnimal(Animal $animal){
         if(!isset($this -> animalsArray[$animal -> getType()]))
             $this -> animalsArray[$animal -> getType()] = array();
 
         array_push($this -> animalsArray[$animal -> getType()], $animal);
     }
 
-    // подсчет животных
+    // вывод животных и их количества
     public function countAnimals(){
         echo 'Животные на ферме: '.PHP_EOL;
         foreach ($this->animalsArray as $type => $typeArr){
@@ -51,6 +51,7 @@ class Farm {
         echo PHP_EOL;
 
     }
+
     // вывод всей собраной продукции
     public function countProducts(){
         echo 'Собрано продукции всего: '.PHP_EOL;
