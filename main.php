@@ -1,10 +1,12 @@
 <?php
+namespace Farm;
 
-include 'Classes/Farm.php';
-include 'Classes/Animal.php';
-include 'Classes/Cow.php';
-include 'Classes/Chicken.php';
+require_once __DIR__ . '/vendor/autoload.php';
 
+use Farm\Classes\Farm;
+use Farm\Classes\Cow;
+use Farm\Classes\Chicken;
+use Farm\Classes\Show;
 
 
 $farm = new Farm();
@@ -17,9 +19,8 @@ for($i = 0; $i < 20; $i++){
     $farm -> addAnimal(new Chicken());
 }
 
-$farm -> countAnimals();
-
-$farm -> collectProduct(7);
+Show::countAnimals($farm->getAnimalsArray());
+Show::countProductsForTimes($farm->collectProduct(7));
 
 for($i = 0; $i < 1; $i++){
     $farm -> addAnimal(new Cow());
@@ -28,10 +29,11 @@ for($i = 0; $i < 5; $i++){
     $farm -> addAnimal(new Chicken());
 }
 
-$farm -> countAnimals();
+Show::countAnimals($farm->getAnimalsArray());
+Show::countProductsForTimes($farm->collectProduct(7));
 
-$farm -> collectProduct(7);
-$farm -> countProducts();
+Show::countProducts($farm->getProductsArray());
+
 
 
 

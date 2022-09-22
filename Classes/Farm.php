@@ -1,5 +1,5 @@
 <?php
-
+namespace Farm\Classes;
 
 class Farm {
     private $animalsArray = array();
@@ -13,17 +13,8 @@ class Farm {
         array_push($this -> animalsArray[$animal -> getType()], $animal);
     }
 
-    // вывод животных и их количества
-    public function countAnimals(){
-        echo 'Животные на ферме: '.PHP_EOL;
-        foreach ($this->animalsArray as $type => $typeArr){
-            echo 'Животное: '.$type.'   Количество: '.count($typeArr).PHP_EOL;
-        }
-        echo PHP_EOL;
-    }
-
     // сбор продукции
-    public function collectProduct($times = 1){
+    public function collectProduct($times = 1):array{
         $products = array();
         // добавление продукции с массив с собраной продукцией за $times раз
         for ($i = 0; $i < $times; $i++){
@@ -44,23 +35,11 @@ class Farm {
             $this -> productsArray[$product] = $this -> productsArray[$product] + $value;
         }
 
-        echo 'Продукция за '.$times.' дней:'.PHP_EOL;
-        foreach ($products as $product => $value) {
-            echo $product.': '.$value.PHP_EOL;
-        }
-        echo PHP_EOL;
-
+        return array(
+            'times' => $times,
+            'products' => $products
+            );
     }
-
-    // вывод всей собраной продукции
-    public function countProducts(){
-        echo 'Собрано продукции всего: '.PHP_EOL;
-        foreach ($this -> productsArray as $product => $value) {
-            echo $product.': '.$value.PHP_EOL;
-        }
-        echo PHP_EOL;
-    }
-
 
     public function getAnimalsArray():array{
         return $this -> animalsArray;

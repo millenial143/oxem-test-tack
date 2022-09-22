@@ -1,4 +1,5 @@
 <?php
+namespace Farm\Classes;
 
 class Cow extends Animal {
     public function __construct()

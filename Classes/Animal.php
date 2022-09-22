@@ -1,7 +1,7 @@
 <?php
+namespace Farm\Classes;
 
-
-class Animal {
+abstract class Animal {
     protected static $id;
     protected $animalId;
     protected $type;
